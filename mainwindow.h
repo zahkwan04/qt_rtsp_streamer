@@ -5,7 +5,6 @@
 #include <QProcess>
 #include <QCamera>
 #include <QCameraViewfinder>
-#include <QCameraImageCapture>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +20,9 @@ public:
 private slots:
     void startStreaming();
     void stopStreaming();
+    void readGstOutput();  // ✅ New: Reads stdout from GStreamer
+    void readGstError();   // ✅ New: Reads stderr from GStreamer
+    void gstProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);  // ✅ New: Handles process exit
 
 private:
     Ui::MainWindow *ui;
